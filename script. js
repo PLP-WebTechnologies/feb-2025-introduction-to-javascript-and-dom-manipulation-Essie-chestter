@@ -1,0 +1,54 @@
+// Get references to the HTML elements
+const dynamicTextElement = document.getElementById('dynamicText');
+const changeTextButton = document.getElementById('changeTextBtn');
+const styledDivElement = document.getElementById('styledDiv');
+const changeStyleButton = document.getElementById('changeStyleBtn');
+const elementContainer = document.getElementById('elementContainer');
+const addElementButton = document.getElementById('addElementBtn');
+const removeElementButton = document.getElementById('removeElementBtn');
+
+// Counter for added elements
+let elementCounter = 1;
+
+// Function to change the text content
+function changeText() {
+    dynamicTextElement.textContent = 'The text has been updated dynamically!';
+}
+
+// Function to change the CSS styles
+function changeStyle() {
+    styledDivElement.style.backgroundColor = 'yellow';
+    styledDivElement.style.color = 'red';
+    styledDivElement.style.fontWeight = 'bold';
+}
+
+// Function to add a new element
+function addElement() {
+    const newParagraph = document.createElement('p');
+    newParagraph.textContent = `New element ${elementCounter}`;
+    newParagraph.classList.add('new-element');
+    elementContainer.appendChild(newParagraph);
+    elementCounter++;
+}
+
+// Function to remove the last added element
+function removeElement() {
+    const lastChild = elementContainer.lastElementChild;
+    if (lastChild && elementContainer.children.length > 1) { // Ensure there's more than the initial element
+        elementContainer.removeChild(lastChild);
+        elementCounter--;
+        if (elementCounter < 1) {
+            elementCounter = 1; // Reset counter if all added elements are removed
+        }
+    } else if (elementContainer.children.length === 1) {
+        alert("Cannot remove the initial element.");
+    } else {
+        alert("No elements to remove.");
+    }
+}
+
+// Add event listeners to the buttons
+changeTextButton.addEventListener('click', changeText);
+changeStyleButton.addEventListener('click', changeStyle);
+addElementButton.addEventListener('click', addElement);
+removeElementButton.addEventListener('click', removeElement);
