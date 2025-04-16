@@ -1,0 +1,12 @@
+#styledDiv {
+    background-color: lightblue;
+    padding: 10px;
+    border: 1px solid blue;
+}
+
+.new-element {
+    background-color: lightgreen;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid green;
+}
